@@ -11,7 +11,7 @@ import 'package:chewie/src/material/widgets/options_dialog.dart';
 import 'package:chewie/src/notifiers/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
+import 'package:ext_video_player/ext_video_player.dart';
 import 'package:chewie/src/models/subtitle_model.dart';
 
 import 'widgets/playback_speed_dialog.dart';
@@ -323,7 +323,7 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls>
   }
 
   Widget _buildHitArea() {
-    final bool isFinished = _latestValue.position >= _latestValue.duration;
+    final bool isFinished = _latestValue.position >= _latestValue.duration!;
 
     return GestureDetector(
       onTap: () {
@@ -433,7 +433,7 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls>
     final duration = _latestValue.duration;
 
     return Text(
-      '${formatDuration(position)} / ${formatDuration(duration)}',
+      '${formatDuration(position)} / ${formatDuration(duration!)}',
       style: const TextStyle(
         fontSize: 14.0,
         color: Colors.white,
@@ -491,7 +491,7 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls>
   }
 
   void _playPause() {
-    final isFinished = _latestValue.position >= _latestValue.duration;
+    final isFinished = _latestValue.position >= _latestValue.duration!;
 
     setState(() {
       if (controller.value.isPlaying) {
@@ -501,7 +501,7 @@ class _MaterialDesktopControlsState extends State<MaterialDesktopControls>
       } else {
         _cancelAndRestartTimer();
 
-        if (!controller.value.isInitialized) {
+        if (!controller.value.initialized) {
           controller.initialize().then((_) {
             controller.play();
           });

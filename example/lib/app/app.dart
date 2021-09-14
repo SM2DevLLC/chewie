@@ -2,8 +2,7 @@ import 'package:chewie_example/app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
-
-import 'package:video_player/video_player.dart';
+import 'package:ext_video_player/ext_video_player.dart';
 
 class ChewieDemo extends StatefulWidget {
   const ChewieDemo({
@@ -41,7 +40,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
   Future<void> initializePlayer() async {
     _videoPlayerController1 = VideoPlayerController.network(
-        'https://assets.mixkit.co/videos/preview/mixkit-daytime-city-traffic-aerial-view-56-large.mp4');
+        'https://www.youtube.com/watch?v=YFCSODyFxbE');
     _videoPlayerController2 = VideoPlayerController.network(
         'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4');
     await Future.wait([
@@ -151,7 +150,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
               child: Center(
                 child: _chewieController != null &&
                         _chewieController!
-                            .videoPlayerController.value.isInitialized
+                            .videoPlayerController.value.initialized
                     ? Chewie(
                         controller: _chewieController!,
                       )

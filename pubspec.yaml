@@ -12,7 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^5.0.0
-  video_player: ^2.1.5
+  ext_video_player:
+    git: https://github.com/Bestfootballer/ext_video_player.git
   wakelock: ^0.5.2
 
 dev_dependencies:
